@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true,
 const db = mongoose.connection
 
 db.on('error', () => {
-  console.log('mongode error')
+  console.log('mongodb error')
 })
 
 db.once('open', () => {
