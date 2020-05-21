@@ -26,13 +26,18 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Record.find()
     .lean()
+    .sort({ _id: 'asc' })
     .then(record => {
 
       //在這裡將category改成icon
       for (let i = 0; i < record.length; i++) {
         record[i].category = changeIcon(record[i].category)
       }
-      res.render('index', { record })
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+        .then(category => res.render('index', { record, category }))
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 

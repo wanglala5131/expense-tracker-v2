@@ -7,11 +7,9 @@
         <p class="flex-grow-1">類別</p>
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
+        {{#each category}}
+        <a class="dropdown-item" href="#">{{this.category}}</a>
+        {{/each}}
       </div>
     </div>
     <!-- total-expense -->
