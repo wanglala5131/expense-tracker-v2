@@ -1,0 +1,47 @@
+<form action="/record/create" method="POST" class="mx-auto enter-form d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">請輸入你的支出</h4>
+      <p class="text-center">*必填欄位</p>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <h5>名稱*：</h5>
+      <input class="flex-grow-1" type="text" required="required" name="name" placeholder="e.g.午餐、晚餐">
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>日期*：</h5>
+      <input class="flex-grow-1 input-date" type="date" required="required" name="date">
+      <script>
+        const dateValue = document.querySelector('.input-date')
+        const now = new Date()
+        let year = now.getFullYear().toString()
+        let month = (now.getMonth() + 1).toString()
+        let date = now.getDate().toString()
+        if (month.length < 2) {
+          month = '0' + month
+        }
+        if (date.length < 2) {
+          date = '0' + date
+        }
+        let today = year + '-' + month + '-' + date
+        dateValue.value = today
+      </script>
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>類別*：</h5>
+      <select class="flex-grow-1" name="category" required="required">
+        {{#each category}}
+        <option value="{{this.category}}">{{this.category}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>金額*：</h5>
+      <input class="flex-grow-1" type="number" min="0" required="required" name="amount">
+    </div>
+    <div class="enter-button col-12 my-4 d-flex justify-content-around">
+      <a class="btn cancel-button" href="/">返回首頁</a>
+      <button type="submit" class="btn create-button">新增項目</button>
+    </div>
+  </div>
+</form>

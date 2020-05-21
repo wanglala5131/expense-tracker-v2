@@ -1,7 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
-const changeIcon = require('./changeIcon')
+const bodyParser = require('body-parser')
+const changeLanguage = require('./changeLanguage')
 const Record = require('./models/record')
 const Category = require('./models/category')
 const app = express()
@@ -22,6 +23,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   Record.find()
@@ -31,7 +33,7 @@ app.get('/', (req, res) => {
 
       //在這裡將category改成icon
       for (let i = 0; i < record.length; i++) {
-        record[i].category = changeIcon(record[i].category)
+        record[i].category = changeLanguage(record[i].category)
       }
       Category.find()
         .lean()
@@ -40,7 +42,21 @@ app.get('/', (req, res) => {
         .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
+})
 
+app.get('/record/create', (req, res) => {
+  Category.find()
+    .lean()
+    .sort({ _id: 'asc' })
+    .then(category => res.render('create', { category }))
+    .catch(err => console.log(err))
+})
+app.post('/record/create', (req, res) => {
+  const { name, category, date, amount } = req.body
+
+  return Record.create({ name, category, date, amount })
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
 })
 
 app.listen(PORT, () => {

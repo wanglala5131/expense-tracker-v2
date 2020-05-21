@@ -1,6 +1,6 @@
 
 
-function changeIcon(category) {
+function changeLanguage(category) {
   switch (category) {
     case '家居樂業':
       return 'fas fa-home'
@@ -17,5 +17,5 @@ function changeIcon(category) {
 
 
 
-module.exports = changeIcon
+module.exports = changeLanguage
 
