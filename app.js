@@ -39,18 +39,18 @@ app.get('/', (req, res) => {
   Record.find()
     .lean()
     .sort({ _id: 'asc' })
-    .then(record => {
+    .then(records => {
       let totalAmount = 0
 
       //在這裡將category改成icon 和 加上所有amonut
-      for (let i = 0; i < record.length; i++) {
-        record[i].category = changeLanguage(record[i].category)
-        totalAmount += Number(record[i].amount)
+      for (let i = 0; i < records.length; i++) {
+        records[i].category = changeLanguage(records[i].category)
+        totalAmount += Number(records[i].amount)
       }
       Category.find()
         .lean()
         .sort({ _id: 'asc' })
-        .then(category => res.render('index', { record, category, totalAmount }))
+        .then(category => res.render('index', { records, category, totalAmount }))
         .catch(err => console.log(err))
 
     })
@@ -74,23 +74,19 @@ app.post('/record/create', (req, res) => {
       for (let i = 0; i < record.length; i++) {
         modalNumberList.push(record[i].modalId)
       }
-      console.log(modalNumberList)
       let modalId = modalNumber()
       while (modalNumberList.includes(modalId)) {   //CHECK是否重複
-        console.log('repeat!!')
         modalId = modalNumber()
       }
       return Record.create({ name, category, date, amount, modalId })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
-
     })
-
-  // 
 })
+
 //編輯支出
 app.get('/record/:id/edit', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   Record.findById(id)
     .lean()
     .then(record => {
@@ -107,7 +103,7 @@ app.get('/record/:id/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 app.put('/record/:id', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   return Record.findById(id)
     .then(record => {
       record = Object.assign(record, req.body)
@@ -117,14 +113,39 @@ app.put('/record/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-
-
 //刪除支出
 app.delete('/record/:id', (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   Record.findById(id)
     .then(record => record.remove())
     .then(res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
+//分類
+app.get('/categories/:currentCategory', (req, res) => {
+  let { currentCategory } = (req.params)
+  currentCategory = changeLanguage(currentCategory)
+  Record.find()
+    .lean()
+    .then(records => {
+      return records.filter(record => record.category === currentCategory)
+    })
+
+    .then(records => {
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+        .then(category => {
+          let totalAmount = 0
+
+          for (let i = 0; i < records.length; i++) {
+            records[i].category = changeLanguage(records[i].category)
+            totalAmount += Number(records[i].amount)
+          }
+          res.render('index', { records, category, currentCategory, totalAmount })
+        })
+    })
     .catch(err => console.log(err))
 })
 

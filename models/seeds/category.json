@@ -1,9 +1,24 @@
 {
-  "category": [
-    "家居樂業",
-    "交通出行",
-    "休閒娛樂",
-    "餐飲食品",
-    "其他"
+  "results": [
+    {
+      "category": "家居樂業",
+      "category_en": "householdSupplies"
+    },
+    {
+      "category": "交通出行",
+      "category_en": "transportation"
+    },
+    {
+      "category": "休閒娛樂",
+      "category_en": "leisure"
+    },
+    {
+      "category": "餐飲食品",
+      "category_en": "food"
+    },
+    {
+      "category": "其他",
+      "category_en": "other"
+    }
   ]
 }
