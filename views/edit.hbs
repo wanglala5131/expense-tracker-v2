@@ -1,0 +1,44 @@
+<form action="/record/{{record._id}}?_method=PUT" method="POST"
+  class="mx-auto enter-form d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">請輸入你的支出</h4>
+      <p class="text-center">*必填欄位</p>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <h5>名稱*：</h5>
+      <input class="flex-grow-1" type="text" required="required" name="name" placeholder="e.g.午餐、晚餐"
+        value="{{record.name}}">
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>日期*：</h5>
+      <input class="flex-grow-1 input-date" type="date" required="required" name="date" value="{{record.date}}">
+
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>類別*：</h5>
+      <select class="flex-grow-1" name="category" required="required">
+        <option value="家居樂業" {{#if (equal record.category '家居樂業')}}selected{{/if}}>家居樂業</option>
+        <option value="交通出行" {{#if (equal record.category '交通出行')}}selected{{/if}}>交通出行</option>
+        <option value="休閒娛樂" {{#if (equal record.category '休閒娛樂')}}selected{{/if}}>休閒娛樂</option>
+        <option value="餐飲食品" {{#if (equal record.category '餐飲食品')}}selected{{/if}}>餐飲食品</option>
+        <option value="其他" {{#if (equal record.category '其他')}}selected{{/if}}>其他</option>
+      </select>
+
+      <!-- 問題：不知道為什麼下面這個會失敗，是equal的第二個參數一定要給字串嗎?
+      {{#each category}}
+      <option value="{{this.category}}" {{#if (equal this.category record.category)}}selected{{/if}}>{{this.category}}
+      </option>
+      {{/each}} -->
+
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <h5>金額*：</h5>
+      <input class="flex-grow-1" type="number" min="0" required="required" name="amount" value="{{record.amount}}">
+    </div>
+    <div class="enter-button col-12 my-4 d-flex justify-content-around">
+      <a class="btn cancel-button" href="/">返回首頁</a>
+      <button type="submit" class="btn create-button">新增項目</button>
+    </div>
+  </div>
+</form>

@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const changeLanguage = require('./changeLanguage')
 const Record = require('./models/record')
 const Category = require('./models/category')
@@ -19,11 +20,19 @@ db.once('open', () => {
   console.log('mongodb connected')
 })
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs({
+  defaultLayout: 'main',
+  extname: '.hbs',
+  helpers: {
+    equal: function (v1, v2) { return (v1 === v2) }
+  }
+}))
 app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+
 
 app.get('/', (req, res) => {
   Record.find()
@@ -46,7 +55,7 @@ app.get('/', (req, res) => {
     })
     .catch(err => console.log(err))
 })
-
+//新增支出
 app.get('/record/create', (req, res) => {
   Category.find()
     .lean()
@@ -59,6 +68,43 @@ app.post('/record/create', (req, res) => {
 
   return Record.create({ name, category, date, amount })
     .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+//編輯支出
+app.get('/record/:id/edit', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .lean()
+    .then(record => {
+      record.date = record.date.replace(/\//g, '-')  //將斜線改橫槓
+      const currentCategory = record.category
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+        .then(category => {
+          res.render('edit', { record, category, currentCategory })
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+})
+app.put('/record/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//刪除支出
+app.delete('/record/:id', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .then(record => record.remove())
+    .then(res.redirect('/'))
     .catch(err => console.log(err))
 })
 
