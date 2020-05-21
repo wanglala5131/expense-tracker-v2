@@ -20,16 +20,17 @@
       <span>25566</span>
     </div>
     <ul class="list-group">
+      {{#each record}}
       <li class="list-group-item">
         <div class="list-box row d-flex justify-content-center justify-content-xs-between align-items-center">
           <div class="list-info col-auto d-flex align-items-center flex-grow-1">
-            <div class="list-icon"><i class="fas fa-home"></i></div>
+            <div class="list-icon"><i class="{{this.category}}"></i></div>
             <div class="list-text flex-grow-1 mx-2">
-              <p class="item">午餐</p>
-              <p class="date">2019/04/05</p>
+              <p class="item">{{this.name}}</p>
+              <p class="date">{{this.date}}</p>
             </div>
             <div class="list-expense">
-              60
+              {{this.amount}}
             </div>
           </div>
           <div class="list-button col-auto">
@@ -44,10 +45,11 @@
             </form>
           </div>
       </li>
+      {{/each}}
     </ul>
 
     <!-- 以後可能用到的Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

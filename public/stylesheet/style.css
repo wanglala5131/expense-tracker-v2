@@ -88,6 +88,8 @@ p {
   font-size: 1.2rem;
 }
 .list-icon>i {
+  width: 40px;
+  height: auto;
   font-size: 2rem;
   color: #7ca2a2;
 }

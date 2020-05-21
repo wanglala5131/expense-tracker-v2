@@ -1,6 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const changeIcon = require('./changeIcon')
+const Record = require('./models/record')
+const Category = require('./models/category')
 const app = express()
 const PORT = 3000
 
@@ -21,7 +24,18 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .then(record => {
+
+      //在這裡將category改成icon
+      for (let i = 0; i < record.length; i++) {
+        record[i].category = changeIcon(record[i].category)
+      }
+      res.render('index', { record })
+    })
+    .catch(err => console.log(err))
+
 })
 
 app.listen(PORT, () => {
