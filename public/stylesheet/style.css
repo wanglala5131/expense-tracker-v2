@@ -54,7 +54,7 @@ p {
 
 /* total-expense */
 .total-expense {
-  margin: 20px 0;
+  margin: 20px 40px 20px 0;
 }
 .total-expense span {
   font-size: 50px;

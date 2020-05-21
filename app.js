@@ -30,16 +30,19 @@ app.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(record => {
+      let totalAmount = 0
 
-      //在這裡將category改成icon
+      //在這裡將category改成icon 和 加上所有amonut
       for (let i = 0; i < record.length; i++) {
         record[i].category = changeLanguage(record[i].category)
+        totalAmount += Number(record[i].amount)
       }
       Category.find()
         .lean()
         .sort({ _id: 'asc' })
-        .then(category => res.render('index', { record, category }))
+        .then(category => res.render('index', { record, category, totalAmount }))
         .catch(err => console.log(err))
+
     })
     .catch(err => console.log(err))
 })
