@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const changeLanguage = require('./changeLanguage')
+const modalNumber = require('./modalNumber')
 const Record = require('./models/record')
 const Category = require('./models/category')
 const app = express()
@@ -65,10 +66,27 @@ app.get('/record/create', (req, res) => {
 })
 app.post('/record/create', (req, res) => {
   const { name, category, date, amount } = req.body
+  Record.find()
+    .lean()
+    .then(record => {
+      //把已有的modalId存成陣列
+      let modalNumberList = []
+      for (let i = 0; i < record.length; i++) {
+        modalNumberList.push(record[i].modalId)
+      }
+      console.log(modalNumberList)
+      let modalId = modalNumber()
+      while (modalNumberList.includes(modalId)) {   //CHECK是否重複
+        console.log('repeat!!')
+        modalId = modalNumber()
+      }
+      return Record.create({ name, category, date, amount, modalId })
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
 
-  return Record.create({ name, category, date, amount })
-    .then(() => res.redirect('/'))
-    .catch(err => console.log(err))
+    })
+
+  // 
 })
 //編輯支出
 app.get('/record/:id/edit', (req, res) => {
@@ -98,6 +116,8 @@ app.put('/record/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+
 
 //刪除支出
 app.delete('/record/:id', (req, res) => {

@@ -4,31 +4,36 @@
       "name": "早午餐：鐵板麵",
       "category": "餐飲食品",
       "date": "2020/05/20",
-      "amount": "80"
+      "amount": "80",
+      "modalId": "AAAAAAAAAA"
     },
     {
       "name": "高鐵票台北到台中",
       "category": "交通出行",
       "date": "2020/05/20",
-      "amount": "675"
+      "amount": "675",
+      "modalId": "BBBBBBBBBB"
     },
     {
       "name": "看電影",
       "category": "休閒娛樂",
       "date": "2020/05/20",
-      "amount": "240"
+      "amount": "240",
+      "modalId": "CCCCCCCCCC"
     },
     {
       "name": "沐浴乳",
       "category": "家居樂業",
       "date": "2020/05/21",
-      "amount": "159"
+      "amount": "159",
+      "modalId": "DDDDDDDDDD"
     },
     {
       "name": "貓飼料：渴望無穀雞肉",
       "category": "其他",
       "date": "2020/05/20",
-      "amount": "999"
+      "amount": "999",
+      "modalId": "EEEEEEEEEE"
     }
   ]
 }

@@ -16,6 +16,10 @@ const recordSchema = new Schema({
   amount: {
     type: String,
     required: true
+  },
+  modalId: {
+    type: String,
+    required: true
   }
 })
 
