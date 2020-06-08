@@ -23,7 +23,15 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              {{#if this.exist}}
+              <div class="modal-body text-center">
+                請先將「 {{this.name}} 」類別的支出紀錄刪掉或換掉，<br>才能刪掉這個類別唷！
+              </div>
+              <div class="modal-footer">
+                <a type="button" class="btn modal-button cancel-button" data-dismiss="modal">取消</a>
+              </div>
+              {{else}}
+              <div class="modal-body  text-center">
                 請問真的要刪除 「 {{this.name}} 」 此項類別嗎？
               </div>
               <div class="modal-footer">
@@ -32,6 +40,7 @@
                   <button type="submit" class="btn modal-button delete-button">刪除</button>
                 </form>
               </div>
+              {{/if}}
             </div>
           </div>
         </div>
