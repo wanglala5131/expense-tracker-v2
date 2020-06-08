@@ -2,15 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const categorySchema = new Schema({
-  category: {
+  name: {
     type: String,
     required: true
   },
-  category_en: {
+  categoryEN: {
     type: String,
     required: true
   },
-  category_icon_class: {
+  icon: {
     type: String,
     required: true
   },

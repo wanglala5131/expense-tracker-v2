@@ -5,9 +5,9 @@
     <ul class="categories-list">
       {{#each categories}}
       <li class="list-item d-flex justify-content-between align-items-center">
-        <span><i class="{{this.category_icon_class}} mr-4"></i>{{this.category}}</span>
+        <span><i class="{{this.icon}} mr-4"></i>{{this.name}}</span>
         <div class="list-button col-auto">
-          <a class="btn edit-button" href="/record/{{this._id}}/edit">編輯</a>
+          <a class="btn edit-button" href="/categories/{{this._id}}/edit">編輯</a>
           <!-- Button trigger modal -->
           <button type="button" class="btn delete-button" data-toggle="modal" data-target="#{{this.modalId}}">
             刪除
@@ -24,11 +24,11 @@
                 </button>
               </div>
               <div class="modal-body">
-                請問真的要刪除 「 {{this.category}} 」 此項類別嗎？
+                請問真的要刪除 「 {{this.name}} 」 此項類別嗎？
               </div>
               <div class="modal-footer">
                 <a type="button" class="btn modal-button cancel-button" data-dismiss="modal">取消</a>
-                <form action="/record/{{this._id}}?_method=DELETE" method="POST">
+                <form action="/categories/{{this._id}}?_method=DELETE" method="POST">
                   <button type="submit" class="btn modal-button delete-button">刪除</button>
                 </form>
               </div>

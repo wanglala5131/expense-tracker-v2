@@ -48,10 +48,10 @@ router.get('/:id/detail', (req, res) => {
   Record.findById(id)
     .lean()
     .then(record => {
-      Category.findOne({ category: record.category })
+      Category.findOne({ name: record.category })
         .lean()
         .then(category => {
-          const icon = category.category_icon_class
+          const icon = category.icon
           res.render('detail', { record, icon })
         })
     })
@@ -116,8 +116,8 @@ router.post('/filter', (req, res) => {
         .then(records => {
           let totalAmount = 0
           for (let i = 0; i < records.length; i++) {
-            const iconClass = category.filter(singleCategory => singleCategory.category === records[i].category)
-            records[i].category = iconClass[0].category_icon_class
+            const iconClass = category.filter(singleCategory => singleCategory.name === records[i].category)
+            records[i].category = iconClass[0].icon
             totalAmount += Number(records[i].amount)
           }
           res.render('index', { records, totalAmount, category, currentCategory, currentMonth })

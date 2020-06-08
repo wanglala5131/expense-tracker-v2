@@ -21,8 +21,8 @@
       <select class="flex-grow-1" name="category" required="required" id="category">
 
         {{#each category}}
-        <option value="{{this.category}}" {{#if (equal this.category ../record.category)}}selected{{/if}}>
-          {{this.category}}
+        <option value="{{this.name}}" {{#if (equal this.name ../record.category)}}selected{{/if}}>
+          {{this.name}}
         </option>
         {{/each}}
 

@@ -15,7 +15,7 @@ router.get('/create', (req, res) => {
   res.render('categoriesCreate')
 })
 router.post('/create', (req, res) => {
-  let { category, categoryEN, icon } = req.body
+  let { name, categoryEN, icon } = req.body
   if (!icon) {
     icon = 'far fa-question-circle'
   }
@@ -34,14 +34,33 @@ router.post('/create', (req, res) => {
         modalId = 'cate' + modalNumber()
       }
       return Category.create({
-        category,
-        category_en: categoryEN,
-        category_icon_class: icon,
+        name,
+        categoryEN,
+        icon,
         modalId
       })
         .then(() => res.redirect('/categories'))
         .catch(err => console.log(err))
 
     })
+})
+router.get('/:id/edit', (req, res) => {
+  const { id } = req.params
+  Category.findById(id)
+    .lean()
+    .then(category => {
+      res.render('categoriesEdit', { category })
+    })
+})
+router.put('/:id', (req, res) => {
+  const { id } = req.params
+
+  return Category.findById(id)
+    .then(category => {
+      category = Object.assign(category, req.body)
+      return category.save()
+    })
+    .then(() => res.redirect('/categories'))
+    .catch(err => console.log(err))
 })
 module.exports = router

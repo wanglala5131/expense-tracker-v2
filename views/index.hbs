@@ -22,8 +22,8 @@
         <select name="currentCategory" class="mx-2">
           <option value="all" {{#if (equal 'all' currentCategory)}}selected{{/if}}>全部類別</option>
           {{#each category}}
-          <option value="{{this.category}}" {{#if (equal this.category ../currentCategory)}}selected{{/if}}>
-            {{this.category}}
+          <option value="{{this.name}}" {{#if (equal this.name ../currentCategory)}}selected{{/if}}>
+            {{this.name}}
           </option>
           {{/each}}
         </select>

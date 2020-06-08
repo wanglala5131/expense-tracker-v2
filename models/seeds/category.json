@@ -1,33 +1,33 @@
 {
   "results": [
     {
-      "category": "家居樂業",
-      "category_en": "householdSupplies",
-      "category_icon_class": "fas fa-home",
+      "name": "家居樂業",
+      "categoryEN": "householdSupplies",
+      "icon": "fas fa-home",
       "modalId": "cateaaaaaaaaaa"
     },
     {
-      "category": "交通出行",
-      "category_en": "transportation",
-      "category_icon_class": "fas fa-shuttle-van",
+      "name": "交通出行",
+      "categoryEN": "transportation",
+      "icon": "fas fa-shuttle-van",
       "modalId": "catebbbbbbbbbb"
     },
     {
-      "category": "休閒娛樂",
-      "category_en": "leisure",
-      "category_icon_class": "fas fa-grin-beam",
+      "name": "休閒娛樂",
+      "categoryEN": "leisure",
+      "icon": "fas fa-grin-beam",
       "modalId": "catecccccccccc"
     },
     {
-      "category": "餐飲食品",
-      "category_en": "food",
-      "category_icon_class": "fas fa-utensils",
+      "name": "餐飲食品",
+      "categoryEN": "food",
+      "icon": "fas fa-utensils",
       "modalId": "catedddddddddd"
     },
     {
-      "category": "其他",
-      "category_en": "other",
-      "category_icon_class": "fas fa-pen",
+      "name": "其他",
+      "categoryEN": "other",
+      "icon": "fas fa-pen",
       "modalId": "cateeeeeeeeeee"
     }
   ]

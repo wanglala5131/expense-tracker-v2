@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
           let totalAmount = 0
           //在這裡將category改成icon 和 加上所有amonut
           for (let i = 0; i < records.length; i++) {
-            const iconClass = category.filter(singleCategory => singleCategory.category === records[i].category)
+            const iconClass = category.filter(singleCategory => singleCategory.name === records[i].category)
             console.log(iconClass)
-            records[i].category = iconClass[0].category_icon_class
+            records[i].category = iconClass[0].icon
             totalAmount += Number(records[i].amount)
           }
 
