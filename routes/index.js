@@ -3,10 +3,11 @@ const router = express.Router()
 
 const home = require('./modules/home')
 const record = require('./modules/record')
-const filter = require('./modules/filter')
+const categories = require('./modules/categories')
+
 
 router.use('/', home)
 router.use('/record', record)
-router.use('/filter', filter)
+router.use('/categories', categories)
 
 module.exports = router

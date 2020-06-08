@@ -93,6 +93,38 @@ router.delete('/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
+//篩選
+router.get('/filter', (req, res) => {
+  res.redirect('/')
+})
+router.post('/filter', (req, res) => {
+  const { currentMonth, currentCategory } = req.body
+  //如果有資料就丟到物件裡
+  let filter = {}
+  if (currentMonth !== 'all') {
+    filter.monthNumber = currentMonth
+  }
+  if (currentCategory !== 'all') {
+    filter.category = currentCategory
+  }
+  Category.find()
+    .lean()
+    .sort({ _id: 'asc' })
+    .then(category => {
+      Record.find(filter)
+        .lean()
+        .then(records => {
+          let totalAmount = 0
+          for (let i = 0; i < records.length; i++) {
+            const iconClass = category.filter(singleCategory => singleCategory.category === records[i].category)
+            records[i].category = iconClass[0].category_icon_class
+            totalAmount += Number(records[i].amount)
+          }
+          res.render('index', { records, totalAmount, category, currentCategory, currentMonth })
+        })
+    })
+})
+
 
 
 

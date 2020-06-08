@@ -13,6 +13,10 @@ const categorySchema = new Schema({
   category_icon_class: {
     type: String,
     required: true
+  },
+  modalId: {
+    type: String,
+    required: true
   }
 })
 

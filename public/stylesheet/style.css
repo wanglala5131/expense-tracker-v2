@@ -187,7 +187,7 @@ p {
 .enter-form .col-12 {
   margin: 20px 0;
 }
-.enter-form label {
+.enter-form label, .categoriesCreate label {
   margin-right: 1rem;
   font-size: 1.1rem;
   margin-bottom: 0;
@@ -230,6 +230,33 @@ p {
   background-color: rgba(0,0,0,0.6);
   color: rgba(255,255,255,0.8)
 }
+/* categories-list */
+.categories-list {
+  border: 3px solid #7ca2a2;
+  width: 30%;
+  min-width: 400px;
+  border-radius: 2px;
+  padding: 0;
+}
+.categories-list .list-item {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 2px solid #7ca2a2;
+}
+.categories-list span {
+  font-size: 1.2em;
+  padding-left: 20px;
+}
+.categories-list .list-item:last-child {
+  border-bottom: none;
+}
+.categories-list .list-item:hover {
+  background-color: #e6e6fa;
+}
+.categories-list i {
+  font-size: 2rem;
+  width: 28px;
+}
 
 
 @media screen and (max-width: 925px) {
@@ -256,6 +283,10 @@ p {
   .enter-form {
     width: 60%;
   }
+  .categories-list .list-button .btn,.categories-list .list-button {
+    margin: 0;
+  }
+ 
 }
 
 

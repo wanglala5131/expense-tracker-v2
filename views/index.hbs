@@ -2,7 +2,8 @@
   <div class="d-flex flex-column align-items-center">
     <!-- dropdown -->
     <div class="dropdown-filter d-flex justify-content-center flex-row">
-      <form action="/filter" method="POST">
+      <a class="btn btn-secondary mr-5" href="/record/create"><i class="fas fa-comment-dollar"></i>新增支出</a>
+      <form action="/record/filter" method="POST">
         <select name="currentMonth" class="mx-2">
           <option value="all" {{#if (equal 'all' currentMonth)}}selected{{/if}}>全部月份</option>
           <option value="01" {{#if (equal '01' currentMonth)}}selected{{/if}}>一月</option>
