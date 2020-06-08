@@ -42,6 +42,17 @@ router.post('/create', (req, res) => {
         .catch(err => console.log(err))
     })
 })
+//詳細頁
+router.get('/:id/detail', (req, res) => {
+  const { id } = req.params
+  Record.findById(id)
+    .lean()
+    .then(record => {
+      const icon = changeLanguage(record.category)
+      res.render('detail', { record, icon })
+    })
+
+})
 //編輯支出
 router.get('/:id/edit', (req, res) => {
   const { id } = req.params
@@ -66,7 +77,7 @@ router.put('/:id', (req, res) => {
       record = Object.assign(record, req.body)
       return record.save()
     })
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect(`/record/${id}/detail`))
     .catch(error => console.log(error))
 })
 //刪除支出
