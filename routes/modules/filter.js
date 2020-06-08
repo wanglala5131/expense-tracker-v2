@@ -5,6 +5,9 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 const changeLanguage = require('../../changeLanguage')
 
+router.get('/', (req, res) => {
+  res.redirect('/')
+})
 
 router.post('/', (req, res) => {
   const { currentMonth, currentCategory } = req.body
@@ -25,7 +28,8 @@ router.post('/', (req, res) => {
         .then(records => {
           let totalAmount = 0
           for (let i = 0; i < records.length; i++) {
-            records[i].category = changeLanguage(records[i].category)  //換成icon
+            const iconClass = category.filter(singleCategory => singleCategory.category === records[i].category)
+            records[i].category = iconClass[0].category_icon_class
             totalAmount += Number(records[i].amount)
           }
 

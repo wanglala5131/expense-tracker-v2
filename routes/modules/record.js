@@ -48,8 +48,12 @@ router.get('/:id/detail', (req, res) => {
   Record.findById(id)
     .lean()
     .then(record => {
-      const icon = changeLanguage(record.category)
-      res.render('detail', { record, icon })
+      Category.findOne({ category: record.category })
+        .lean()
+        .then(category => {
+          const icon = category.category_icon_class
+          res.render('detail', { record, icon })
+        })
     })
 
 })

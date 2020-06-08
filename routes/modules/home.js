@@ -11,17 +11,21 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ date: 'desc' })
     .then(records => {
-      let totalAmount = 0
 
-      //在這裡將category改成icon 和 加上所有amonut
-      for (let i = 0; i < records.length; i++) {
-        records[i].category = changeLanguage(records[i].category)
-        totalAmount += Number(records[i].amount)
-      }
       Category.find()
         .lean()
         .sort({ _id: 'asc' })
-        .then(category => res.render('index', { records, category, totalAmount }))
+        .then(category => {
+          let totalAmount = 0
+          //在這裡將category改成icon 和 加上所有amonut
+          for (let i = 0; i < records.length; i++) {
+            const iconClass = category.filter(singleCategory => singleCategory.category === records[i].category)
+            records[i].category = iconClass[0].category_icon_class
+            totalAmount += Number(records[i].amount)
+          }
+
+          res.render('index', { records, category, totalAmount })
+        })
         .catch(err => console.log(err))
 
     })

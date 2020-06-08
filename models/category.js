@@ -9,6 +9,10 @@ const categorySchema = new Schema({
   category_en: {
     type: String,
     required: true
+  },
+  category_icon_class: {
+    type: String,
+    required: true
   }
 })
 

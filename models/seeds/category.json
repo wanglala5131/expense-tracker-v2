@@ -2,23 +2,28 @@
   "results": [
     {
       "category": "家居樂業",
-      "category_en": "householdSupplies"
+      "category_en": "householdSupplies",
+      "category_icon_class": "fas fa-home"
     },
     {
       "category": "交通出行",
-      "category_en": "transportation"
+      "category_en": "transportation",
+      "category_icon_class": "fas fa-shuttle-van"
     },
     {
       "category": "休閒娛樂",
-      "category_en": "leisure"
+      "category_en": "leisure",
+      "category_icon_class": "fas fa-grin-beam"
     },
     {
       "category": "餐飲食品",
-      "category_en": "food"
+      "category_en": "food",
+      "category_icon_class": "fas fa-utensils"
     },
     {
       "category": "其他",
-      "category_en": "other"
+      "category_en": "other",
+      "category_icon_class": "fas fa-pen"
     }
   ]
 }

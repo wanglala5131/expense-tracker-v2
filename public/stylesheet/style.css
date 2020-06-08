@@ -16,7 +16,7 @@ p {
 .navbar-brand:hover {
   color: #e6e6fa;
 }
-.fa-money-check-alt, .fa-comment-dollar {
+.fa-money-check-alt, .fa-comment-dollar,.fa-list {
   margin-right: 7px;
 }
 .nav-item {
