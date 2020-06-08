@@ -18,4 +18,5 @@ db.once('open', async () => {
   //   })
   // }
   console.log('Category seeds are created!!')
+  db.close()
 })

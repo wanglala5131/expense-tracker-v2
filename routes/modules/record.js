@@ -28,7 +28,14 @@ router.post('/create', (req, res) => {
       while (modalNumberList.includes(modalId)) {   //CHECK是否重複
         modalId = modalNumber()
       }
-      return Record.create({ name, category, date, amount, modalId })
+      return Record.create({
+        name,
+        category,
+        date,
+        monthNumber: date.split('-')[1],
+        amount,
+        modalId
+      })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
     })

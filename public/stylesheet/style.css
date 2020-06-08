@@ -38,7 +38,21 @@ p {
 }
 
 /* dropdown */
+.dropdown-filter {
+  width: 50%;
+}
+.dropdown-filter select {
+  padding: 5px;
+}
+.dropdown-filter button {
+  padding: 7px;
+  border: none;
+  border-radius: 2px;
+  
+}
+
 .dropdown-group {
+  margin: 0 20px;
   width: 20%;
   position: relative;
 }

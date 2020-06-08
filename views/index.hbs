@@ -1,21 +1,38 @@
 <div class="index-content">
   <div class="d-flex flex-column align-items-center">
     <!-- dropdown -->
-    <div class="dropdown-group">
-      <button type="button" class="dropdown-toggle d-flex justify-content-between align-items-center"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <p class="dropdown-text flex-grow-1">{{currentCategory}}</p>
-        <script>
-          const dropdownText = document.querySelector('.dropdown-text')
-          if (!dropdownText.textContent) { dropdownText.textContent = '全部' }
-        </script>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/">全部</a>
-        {{#each category}}
-        <a class="dropdown-item" href="/categories/{{this.category_en}}">{{this.category}}</a>
-        {{/each}}
-      </div>
+    <div class="dropdown-filter d-flex justify-content-center flex-row">
+      <form action="/filter" method="POST">
+        <select name="currentMonth" class="mx-2">
+          <option value="all" {{#if (equal 'all' currentMonth)}}selected{{/if}}>全部月份</option>
+          <option value="01" {{#if (equal '01' currentMonth)}}selected{{/if}}>一月</option>
+          <option value="02" {{#if (equal '02' currentMonth)}}selected{{/if}}>二月</option>
+          <option value="03" {{#if (equal '03' currentMonth)}}selected{{/if}}>三月</option>
+          <option value="04" {{#if (equal '04' currentMonth)}}selected{{/if}}>四月</option>
+          <option value="05" {{#if (equal '05' currentMonth)}}selected{{/if}}>五月</option>
+          <option value="06" {{#if (equal '06' currentMonth)}}selected{{/if}}>六月</option>
+          <option value="07" {{#if (equal '07' currentMonth)}}selected{{/if}}>七月</option>
+          <option value="08" {{#if (equal '08' currentMonth)}}selected{{/if}}>八月</option>
+          <option value="09" {{#if (equal '09' currentMonth)}}selected{{/if}}>九月</option>
+          <option value="10" {{#if (equal '10' currentMonth)}}selected{{/if}}>十月</option>
+          <option value="11" {{#if (equal '11' currentMonth)}}selected{{/if}}>十一月</option>
+          <option value="12" {{#if (equal '12' currentMonth)}}selected{{/if}}>十二月</option>
+        </select>
+        <select name="currentCategory" class="mx-2">
+          <option value="all" {{#if (equal 'all' currentCategory)}}selected{{/if}}>全部類別</option>
+          {{#each category}}
+          <option value="{{this.category}}" {{#if (equal this.category ../currentCategory)}}selected{{/if}}>
+            {{this.category}}
+          </option>
+          {{/each}}
+          {{!-- <option value="家居樂業">家居樂業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="其他">其他</option> --}}
+        </select>
+        <button type="submit" class="mx-2">篩選</button>
+      </form>
     </div>
     <!-- total-expense -->
     <div class="total-expense d-flex">
