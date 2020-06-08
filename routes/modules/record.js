@@ -113,6 +113,7 @@ router.post('/filter', (req, res) => {
     .then(category => {
       Record.find(filter)
         .lean()
+        .sort({ date: 'desc' })
         .then(records => {
           let totalAmount = 0
           for (let i = 0; i < records.length; i++) {

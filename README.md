@@ -14,7 +14,7 @@
 
 ## 安裝與使用
 #### 下載專案
-    git clone https://github.com/wanglala5131/expense-tracker.git
+    git clone https://github.com/wanglala5131/expense-tracker-v2.git
 #### 安裝package
     npm install
 #### 新增支出紀錄的種子資料
@@ -29,8 +29,7 @@
 
 ## 網站功能
 * 可以觀看所有支出紀錄
-* 新增支出紀錄
-* 可編輯支出紀錄
-* 刪除支出紀錄，並會跳出確認提示
+* 可編新增、編輯、移除支出紀錄
 * 根據支出紀錄的類型，可分類支出紀錄
 * 可根據顯示的紀錄，自動算出總花費
+* 可新增、編輯、移除類別
