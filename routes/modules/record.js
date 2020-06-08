@@ -15,7 +15,7 @@ router.get('/create', (req, res) => {
     .catch(err => console.log(err))
 })
 router.post('/create', (req, res) => {
-  const { name, category, date, amount } = req.body
+  const { name, category, date, remarks, merchant, amount } = req.body
   Record.find()
     .lean()
     .then(record => {
@@ -34,6 +34,8 @@ router.post('/create', (req, res) => {
         date,
         monthNumber: date.split('-')[1],
         amount,
+        remarks,
+        merchant,
         modalId
       })
         .then(() => res.redirect('/'))

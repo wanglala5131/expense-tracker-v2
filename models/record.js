@@ -9,6 +9,9 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
+  merchant: {
+    type: String
+  },
   date: {
     type: String,
     required: true
@@ -20,6 +23,9 @@ const recordSchema = new Schema({
   amount: {
     type: String,
     required: true
+  },
+  remarks: {
+    type: String
   },
   modalId: {
     type: String,

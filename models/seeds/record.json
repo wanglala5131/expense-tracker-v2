@@ -3,41 +3,51 @@
     {
       "name": "早午餐：鐵板麵",
       "category": "餐飲食品",
+      "merchant": "樓下早餐店",
       "date": "2020-06-01",
       "monthNumber": "06",
       "amount": "80",
+      "remarks": "",
       "modalId": "AAAAAAAAAA"
     },
     {
       "name": "高鐵票台北到台中",
       "category": "交通出行",
+      "merchant": "高鐵",
       "date": "2020-05-20",
       "monthNumber": "05",
       "amount": "675",
+      "remarks": "",
       "modalId": "BBBBBBBBBB"
     },
     {
       "name": "看電影",
       "category": "休閒娛樂",
+      "merchant": "秀泰",
       "date": "2020-05-25",
       "monthNumber": "05",
       "amount": "240",
+      "remarks": "冰雪奇緣",
       "modalId": "CCCCCCCCCC"
     },
     {
       "name": "沐浴乳",
       "category": "家居樂業",
+      "merchant": "康是美",
       "date": "2020-05-21",
       "monthNumber": "05",
       "amount": "159",
+      "remarks": "八折",
       "modalId": "DDDDDDDDDD"
     },
     {
       "name": "貓飼料：渴望無穀雞肉",
       "category": "其他",
+      "merchant": "愛貓園",
       "date": "2020-04-29",
       "monthNumber": "04",
       "amount": "999",
+      "remarks": "跟同學平分後的價錢",
       "modalId": "EEEEEEEEEE"
     }
   ]

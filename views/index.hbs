@@ -25,11 +25,6 @@
             {{this.category}}
           </option>
           {{/each}}
-          {{!-- <option value="家居樂業">家居樂業</option>
-          <option value="交通出行">交通出行</option>
-          <option value="休閒娛樂">休閒娛樂</option>
-          <option value="餐飲食品">餐飲食品</option>
-          <option value="其他">其他</option> --}}
         </select>
         <button type="submit" class="mx-2">篩選</button>
       </form>
@@ -54,6 +49,7 @@
             </div>
           </div>
           <div class="list-button col-auto">
+            <a class="btn cancel-button" href="/record/{{this._id}}/edit">詳細</a>
             <a class="btn edit-button" href="/record/{{this._id}}/edit">編輯</a>
             <!-- Button trigger modal -->
             <button type="button" class="btn delete-button" data-toggle="modal" data-target="#{{this.modalId}}">

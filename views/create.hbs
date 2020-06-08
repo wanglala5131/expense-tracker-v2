@@ -5,12 +5,12 @@
       <p class="text-center">*必填欄位</p>
     </div>
     <div class="col-12 d-flex align-items-center justify-content-between">
-      <h5>名稱*：</h5>
-      <input class="flex-grow-1" type="text" required="required" name="name" placeholder="e.g.午餐、晚餐">
+      <label for="name">名稱*：</label>
+      <input class="flex-grow-1" type="text" required="required" id="name" name="name" placeholder="e.g.午餐、晚餐">
     </div>
     <div class="col-12 d-flex align-items-center">
-      <h5>日期*：</h5>
-      <input class="flex-grow-1 input-date" type="date" required="required" name="date">
+      <label for="date">日期*：</label>
+      <input class="flex-grow-1 input-date" type="date" required="required" name="date" id="date">
       <script>
         const dateValue = document.querySelector('.input-date')
         const now = new Date()
@@ -28,16 +28,24 @@
       </script>
     </div>
     <div class="col-12 d-flex align-items-center">
-      <h5>類別*：</h5>
-      <select class="flex-grow-1" name="category" required="required">
+      <label for="category">類別*：</label>
+      <select class="flex-grow-1" name="category" required="required" id="category">
         {{#each category}}
         <option value="{{this.category}}">{{this.category}}</option>
         {{/each}}
       </select>
     </div>
     <div class="col-12 d-flex align-items-center">
-      <h5>金額*：</h5>
-      <input class="flex-grow-1" type="number" min="0" required="required" name="amount">
+      <label for="amount">金額*：</label>
+      <input class="flex-grow-1" type="number" min="0" id="amount" required="required" name="amount">
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <label for="merchant">商家 ：</label>
+      <input class="flex-grow-1" type="text" id="merchant" name="merchant">
+    </div>
+    <div class=" col-12 d-flex align-items-center">
+      <label for="remarks">備註 ：</label>
+      <textarea class="flex-grow-1" id="remarks" name="remarks"></textarea>
     </div>
     <div class="enter-button col-12 my-4 d-flex justify-content-around">
       <a class="btn cancel-button" href="/">返回首頁</a>
