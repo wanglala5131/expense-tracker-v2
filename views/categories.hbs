@@ -1,7 +1,10 @@
 <div class="index-content">
   <div class="d-flex flex-column align-items-center">
     <h1 class="mb-3">類別管理</h1>
-    <a href="/categories/create" class="btn btn-secondary mb-2">新增類別</a>
+    <div class="d-flex">
+      <a href="/" class="btn cancel-button mb-2 mr-5">返回</a>
+      <a href="/categories/create" class="btn btn-secondary mb-2">新增類別</a>
+    </div>
     <ul class="categories-list">
       {{#each categories}}
       <li class="list-item d-flex justify-content-between align-items-center">
