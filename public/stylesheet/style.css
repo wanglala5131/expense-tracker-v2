@@ -257,6 +257,14 @@ p {
   font-size: 2rem;
   width: 28px;
 }
+/* .categoriesCreate */
+.modal-body i  {
+  font-size: 40px;
+}
+#display-icon {
+  font-size: 50px;
+  color: #7ca2a2;
+}
 
 
 @media screen and (max-width: 925px) {
