@@ -95,6 +95,12 @@ p {
   padding: 0;
   border: none;
 }
+.no-data {
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+  color: #7ca2a2;
+}
 .list-box {
   margin: 0 10px;
   padding: 10px;

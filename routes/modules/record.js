@@ -115,6 +115,10 @@ router.post('/filter', (req, res) => {
         .lean()
         .sort({ date: 'desc' })
         .then(records => {
+          //沒有資料時
+          if (!records) {
+            return res.render('index', { totalAmount: '0', category, currentCategory, currentMonth })
+          }
           let totalAmount = 0
           for (let i = 0; i < records.length; i++) {
             const iconClass = category.filter(singleCategory => singleCategory.name === records[i].category)
