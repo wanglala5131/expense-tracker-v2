@@ -95,11 +95,8 @@ router.delete('/:id', (req, res) => {
 
 //篩選
 router.get('/filter', (req, res) => {
-  res.redirect('/')
-})
-router.post('/filter', (req, res) => {
-  const { currentMonth, currentCategory } = req.body
-  //如果有資料就丟到物件裡
+  const { currentMonth, currentCategory } = req.query
+  console.log(currentCategory)
   let filter = {}
   if (currentMonth !== 'all') {
     filter.monthNumber = currentMonth
@@ -129,4 +126,5 @@ router.post('/filter', (req, res) => {
         })
     })
 })
+
 module.exports = router
