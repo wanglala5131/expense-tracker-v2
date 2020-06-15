@@ -95,8 +95,8 @@ router.delete('/:id', (req, res) => {
 
 //篩選
 router.get('/filter', (req, res) => {
-  const { currentMonth, currentCategory } = req.query
-  console.log(currentCategory)
+  const currentCategory = req.query.category
+  const currentMonth = req.query.month
   let filter = {}
   if (currentMonth !== 'all') {
     filter.monthNumber = currentMonth

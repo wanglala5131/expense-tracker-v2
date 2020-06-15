@@ -4,7 +4,7 @@
     <div class="dropdown-filter d-flex justify-content-center flex-row">
       <a class="btn btn-secondary mr-5" href="/record/create"><i class="fas fa-comment-dollar"></i>新增支出</a>
       <form action="/record/filter" method="GET" name="filter">
-        <select name="currentMonth" class="mx-2" onchange="this.form.submit()">
+        <select name="month" class="mx-2" onchange="this.form.submit()">
           <option value="all" {{#if (equal 'all'  currentMonth)}}selected{{/if}}>全部月份</option>
           <option value="01" {{#if (equal '01' currentMonth)}}selected{{/if}}>一月</option>
           <option value="02" {{#if (equal '02' currentMonth)}}selected{{/if}}>二月</option>
@@ -19,7 +19,7 @@
           <option value="11" {{#if (equal '11' currentMonth)}}selected{{/if}}>十一月</option>
           <option value="12" {{#if (equal '12' currentMonth)}}selected{{/if}}>十二月</option>
         </select>
-        <select name="currentCategory" class="mx-2" onchange="this.form.submit()">
+        <select name="category" class="mx-2" onchange="this.form.submit()">
           <option value="all" {{#if (equal 'all' currentCategory)}}selected{{/if}}>全部類別</option>
           {{#each category}}
           <option value="{{this.name}}" {{#if (equal this.name ../currentCategory)}}selected{{/if}}>
