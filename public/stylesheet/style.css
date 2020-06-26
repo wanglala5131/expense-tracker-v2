@@ -271,6 +271,35 @@ p {
   font-size: 50px;
   color: #7ca2a2;
 }
+/*login and register*/
+.user-part {
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+}
+.user-part .card {
+  padding: 20px 50px;
+  background-color: #CDDCDC;
+  background-image: radial-gradient(at 50% 100%, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.25) 100%);
+  background-blend-mode: screen, overlay;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
+.user-part .btn-local {
+  background-color:#2e8b57;
+  color: white;
+  margin-top: 30px;
+}
+.user-part .btn:hover {
+  background-color:#028255;
+}
+.user-part .btn-facebook {
+  background-color: #0d33ff;
+  color: white;
+}
+.user-part .btn-facebook:hover {
+  background-color: #2a52be;
+}
 
 
 @media screen and (max-width: 925px) {
