@@ -17,7 +17,10 @@
   <nav class="navbar">
     <a class="navbar-brand" href="/"><i class="fas fa-money-check-alt"></i>家庭記帳本</a>
     <div class="navbar-nav d-flex flex-row">
+      {{#if isAuthenticated}}
       <a class="nav-item mr-2" href="/categories"><i class="fas fa-list"></i>類別管理</a>
+      <a class="nav-item mr-2" href="/users/logout"><i class="fas fa-sign-out-alt"></i>登出</a>
+      {{/if}}
     </div>
   </nav>
 
