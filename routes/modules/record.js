@@ -15,6 +15,7 @@ router.get('/create', (req, res) => {
     .catch(err => console.log(err))
 })
 router.post('/create', (req, res) => {
+  const userId = req.user._id
   const { name, category, date, remarks, merchant, amount } = req.body
   Record.find()
     .lean()
@@ -36,7 +37,8 @@ router.post('/create', (req, res) => {
         amount,
         remarks,
         merchant,
-        modalId
+        modalId,
+        userId
       })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
@@ -44,8 +46,9 @@ router.post('/create', (req, res) => {
 })
 //詳細頁
 router.get('/:id/detail', (req, res) => {
-  const { id } = req.params
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .lean()
     .then(record => {
       Category.findOne({ name: record.category })
@@ -59,8 +62,9 @@ router.get('/:id/detail', (req, res) => {
 })
 //編輯支出
 router.get('/:id/edit', (req, res) => {
-  const { id } = req.params
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .lean()
     .then(record => {
       const currentCategory = record.category
@@ -75,19 +79,21 @@ router.get('/:id/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 router.put('/:id', (req, res) => {
-  const { id } = req.params
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .then(record => {
       record = Object.assign(record, req.body)
       return record.save()
     })
-    .then(() => res.redirect(`/record/${id}/detail`))
+    .then(() => res.redirect(`/record/${_id}/detail`))
     .catch(error => console.log(error))
 })
 //刪除支出
 router.delete('/:id', (req, res) => {
-  const { id } = req.params
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(res.redirect('/'))
     .catch(err => console.log(err))

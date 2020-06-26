@@ -7,7 +7,8 @@ const changeLanguage = require('../../changeLanguage')
 
 
 router.get('/', (req, res) => {
-  Record.find()
+  const userId = req.user._id
+  Record.find({ userId })
     .lean()
     .sort({ date: 'desc' })
     .then(records => {
